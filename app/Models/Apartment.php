@@ -9,10 +9,12 @@ use App\Models\Service;
 use App\Models\Promotion;
 use App\Models\Message;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Apartment extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'user_id', 
