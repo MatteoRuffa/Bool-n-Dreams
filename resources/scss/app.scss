@@ -1,0 +1,162 @@
+@use './partials/variables' as *;
+
+$fa-font-path: "../fonts/webfonts" !default;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+// login
+#nav_login {
+    background-color: $mr-text-dark!important;
+    background: linear-gradient(to bottom, $mr-text-dark, lighten($mr-text-dark, 10%));
+    a {
+        color: white;
+    }
+}
+.logo_cortese {
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+#nav-icon{
+    font-size: 1.5rem;
+}
+
+.form-login {
+    .card-body {
+        #form-login .form-check-input[type="checkbox"]:checked,
+        #form-login .form-check-input[type="checkbox"]:not(:checked) {
+            border: 1px solid $mr-color-contrast !important;
+            background: $mr-color-contrast !important;
+            box-shadow: inset 0 1px 3px rgba($mr-color-contrast, .1) !important;
+        }
+        #form-login .form-check-input[type="checkbox"]:checked::after,
+        #form-login .form-check-input[type="checkbox"]:not(:checked)::after {
+            background: $mr-color-contrast !important;
+        }
+    }
+}
+
+// buttons and various
+.btn {
+    background-color: $mr-color-contrast;
+    border-color: $mr-color-contrast;
+    color: white;
+    &.btn-danger {
+        background-color: #BB2D3B; 
+        border-color: #BB2D3B; 
+        color: white; 
+        &:hover {
+            background-color: darken(#BB2D3B, 10%); 
+            border-color: darken(#BB2D3B, 10%); 
+        }
+    }
+    &.btn-dark-override {
+        background-color: $mr-text-light;
+        border-color: $btn-dark-border;
+        color: $mr-bg-dark;
+    }
+    &.btn-table {
+        background-color: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+    &:hover {
+        background-color: $mr-bg-dark;
+        color: white;
+        box-shadow: 0 0 0 0.2rem rgba($mr-text-dark, .25);
+    }
+    &.btn-add:focus {
+        background-color: $mr-bg-dark;
+        color: white;
+        box-shadow: 0 0 0 0.2rem rgba($mr-text-dark, .25);
+    }
+    
+}
+.btn-link {
+    color: white;
+}
+
+.form-control:focus {
+    border-color: $mr-text-dark;
+    box-shadow: 0 0 0 0.2rem rgba($mr-text-dark, .25);
+}
+
+.card-header {
+    background-color: $mr-text-dark;
+    background: linear-gradient(to bottom, $mr-text-dark, lighten($mr-text-dark, 10%));
+    color: white;
+}
+
+.modal-header {
+    background-color: $mr-text-dark;
+    background: linear-gradient(to bottom, $mr-text-dark, lighten($mr-text-dark, 10%));
+    color: white;
+}
+
+.offcanvas {
+    --bs-dark-rgb: rgb(67, 56, 79)!important;
+    background-color: var(--bs-dark-rgb)!important;
+}
+
+.bg-dark {
+    --bs-dark-rgb: rgb(67, 56, 79)!important;
+    background-color: var(--bs-dark-rgb)!important;
+}
+
+// main
+main {
+    // background-color: $mr-text-light;
+    margin-top: 100px;    
+    height: 90vh;
+    #dashboard {
+        .card-header {
+            background-color: $mr-text-dark;
+            color: white;
+        }
+    }
+}
+
+// table
+#mr-table {
+    border-radius: 10px;
+    overflow: hidden;
+    .table-icon {
+        font-size: 2rem;
+        color: $mr-color-contrast;
+        text-decoration: none;
+    }
+    button.no-border {
+        border: none!important;
+    }
+}
+
+// pagination
+.pagination .page-link {
+    background-color: rgb(68, 51, 86);
+    color: white; 
+}
+.pagination .page-item.active .page-link {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    border-color: rgb(68, 51, 86); 
+}
+.pagination .page-link:active {
+    background-color: rgb(68, 51, 86); 
+    color: white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    border-color: rgb(68, 51, 86); 
+}
+
+
