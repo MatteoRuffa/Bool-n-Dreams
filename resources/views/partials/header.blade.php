@@ -1,5 +1,5 @@
 <!-- Right links -->
-<ul id="nav-icon" class="navbar-nav ms-auto d-flex flex-row ">
+<ul id="navbar-nav" class="navbar-nav ms-auto d-flex flex-row ">
     <li class="nav-item p-2">
         <a class="nav-link me-3 me-lg-0" href="#">
             <i class="fas fa-bell"></i>
@@ -8,11 +8,11 @@
     </li>
 
     <!-- Icon -->
-    <li class="nav-item me-3 me-lg-0 p-2">
+    <!-- <li class="nav-item me-3 me-lg-0 p-2">
         <a class="nav-link" href="https://github.com/MatteoRuffa/laravel-auth">
             <i class="fab fa-github"></i>
         </a>
-    </li>
+    </li> -->
     <li class="nav-item p-2">
         <a class="nav-link me-3 me-lg-0" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();" title="Logout">

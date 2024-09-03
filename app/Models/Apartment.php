@@ -4,18 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Service;
-use App\Models\Promotion;
-use App\Models\Message;
 use Illuminate\Support\Str;
+use App\Models\Service;
+use App\Models\User;
+use App\Models\View;
+use App\Models\Promotion;
+use App\Models\Lead;
+use App\Models\ApartmentPromotion;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Apartment extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $dates = ['deleted_at'];
     protected $fillable = [
         'user_id', 
         'name', 
@@ -31,34 +35,30 @@ class Apartment extends Model
         'latitude',
         'visibility',
         'delete_at',
-        // 'location' da aggiungere eventualmente dopo(vedi logica tom-tom)
+        'location'
     ];
 
-    //Relazione con tabella users
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    //Relazione con tabella services
+    public function promotions()
+    {
+        return $this->belongsToMany(Promotion::class, 'apartment_promotion')
+                    ->withPivot('start_date', 'end_date');
+    }
+
     public function services()
     {
         return $this->belongsToMany(Service::class, 'apartment_service');
     }
 
-    //Relazione con tabella promotions
-    public function promotions()
+    public function views()
     {
-        return $this->belongsToMany(Promotion::class, 'apartment_promotion')->withPivot('start_date', 'end_date');
+        return $this->hasMany(View::class);
     }
 
-    //Relazione con tabella messages
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
-    //Funzione ByGian per generare slug
     public static function generateSlug($name){
         $slugBase = Str::slug(trim($name), '-');
         $slugs = \App\Models\Apartment::withTrashed()->orderBy('slug')->pluck('slug')->toArray();
@@ -84,4 +84,15 @@ class Apartment extends Model
         }
         return $slug;
     }
+    public function setLocationAttribute($latitude, $longitude)
+    {
+        if (isset($latitude) && isset($longitude)) {
+            $this->attributes['location'] = DB::raw("ST_GeomFromText('POINT({$latitude} {$longitude})')");
+        }
+    }
+    public function leads()
+    {
+        return $this->hasMany(Lead::class);
+    }
+
 }

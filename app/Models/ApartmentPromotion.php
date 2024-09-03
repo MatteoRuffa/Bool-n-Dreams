@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Apartment;
-use App\Models\Promotion;
+use Carbon\Carbon; //nicolai
 
 class ApartmentPromotion extends Model
 {
     use HasFactory;
+
+    protected $table = 'apartment_promotion';
 
     protected $fillable = [
         'apartment_id',
@@ -27,4 +28,5 @@ class ApartmentPromotion extends Model
     {
         return $this->belongsTo(Promotion::class);
     }
+
 }
