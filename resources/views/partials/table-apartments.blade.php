@@ -10,9 +10,9 @@
             <!-- <th scope="col">#id Project</th> -->
             <th class="text-white w-25 d-none fw-normal d-xl-table-cell" scope="col">Apartment cover</th>
             <th class="text-white w-25 d-xl-table-cell fw-normal" scope="col">Apartment name</th>
-            <th class="text-white w-25 fw-normal d-lg-table-cell" scope="col">Promotions</th>
-            <th scope="col" class="text-white w-25 fw-normal d-lg-table-cell">Visibility</th>
-            <th scope="col" class="text-white w-25 fw-normal d-lg-table-cell">Address</th>
+            <th class="text-white w-10 fw-normal d-lg-table-cell" scope="col">Promotions</th>
+            <th scope="col" class="text-white w-10 fw-normal d-lg-table-cell">Visibility</th>
+            <th scope="col" class="text-white w-50 fw-normal d-lg-table-cell">Address</th>
             <th scope="col" class="text-white w-25 fw-normal {{ Route::currentRouteName() === 'admin.apartments.index' }}">Actions</th>
         </tr>
     </thead>
@@ -20,7 +20,7 @@
         @foreach ($elements as $element)
             <tr>
                 <!-- <td>{{ $element->id }}</td> pippo -->
-                <td id="td-image-cover" class="d-none d-xl-table-cell"><img class="img-fluid rounded" src="{{ asset('storage/' . $element->image_cover) }}" alt="{{ $element->name }}"></td>
+                <td id="td-image-cover" class=" d-xl-table-cell"><img class="img-fluid rounded" src="{{ asset('storage/' . $element->image_cover) }}" alt="{{ $element->name }}"></td>
                 <td class="d-xl-table-cell align-content-center">{{ $element->name }}</td>
                 <td class="d-lg-table-cell align-content-center">
                     @if ($element->promotions->isNotEmpty())
